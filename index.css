@@ -1,0 +1,53 @@
+/* STILE BODY */
+body {
+  background: linear-gradient(135deg, #e0f2f1, #ffffff);
+
+
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.342);
+  z-index: 100;
+}
+
+.card-traveler {
+  color: white;
+  width: 100%;
+  max-width: 500px;
+}
+
+.hidden {
+  overflow: hidden;
+}
+
+li {
+  list-style-type: none;
+}
+
+.active-hover:hover {
+  text-decoration-line: underline;
+  color: skyblue;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+.card-img-trip {
+  max-width: 500px;
+  height: 300px;
+
+}
+
+
+.travel-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, .18);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}

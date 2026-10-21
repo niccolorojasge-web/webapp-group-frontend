@@ -1,0 +1,119 @@
+import { FaPhoneAlt } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
+
+function TravelerCard(props) {
+  const { traveler } = props;
+  //destrutturo oggetto traveler
+  const {
+    id,
+    firstName,
+    lastName,
+    taxCode,
+    email,
+    phone,
+    emergencyContact,
+    image,
+  } = traveler;
+  return (
+    <>
+      <li
+        className="list-group-item list-group-item-action fs-3"
+        onClick={() => {
+          document
+            .getElementById(`container-traveler-${id}`)
+            .classList.add("overlay");
+          document
+            .getElementById(`container-traveler-${id}`)
+            .classList.remove("d-none");
+          document.querySelector("body").classList.add("hidden");
+        }}
+      >
+        {firstName} {lastName}
+      </li>
+      <div className="row">
+        <div
+          id={`container-traveler-${id}`}
+          className="col d-flex align-items-center justify-content-center d-none"
+        >
+          <div className="container-traveler ">
+            <div className="row">
+              <div className="col">
+                {" "}
+                <div className="card mb-3 card-traveler bg-success w-100">
+                  <div className="row g-0">
+                    <div className="col-md-5">
+                      <img
+                        src={`/imgs/${image}`}
+                        className="img-fluid rounded-start img_travel_card"
+                        alt="immagine viaggiatore"
+                      />
+                    </div>
+                    <div className="col-md-7">
+                      <div className="card-body">
+                        <h5 className="card-title">
+                          {firstName} {lastName}
+                        </h5>
+                        <ul className="card-text">
+                          <li>
+                            <FaPhoneAlt />
+
+                            <span className="active-hover">{phone}</span>
+                          </li>
+                          <li>
+                            <MdEmail />
+
+                            <span className="active-hover">{email}</span>
+                          </li>
+                          <li>C.F. {taxCode}</li>
+                        </ul>
+
+                        <button
+                          type="button"
+                          className="btn-close btn-close-white position-absolute top-0 end-0 m-3"
+                          aria-label="Close"
+                          onClick={() => {
+                            document
+                              .getElementById(`container-traveler-${id}`)
+                              .classList.remove("overlay");
+                            document
+                              .getElementById(`container-traveler-${id}`)
+                              .classList.add("d-none");
+                            document
+                              .querySelector("body")
+                              .classList.remove("hidden");
+                          }}
+                        ></button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="row">
+              <div className="col">
+                <div className="alert alert-warning" role="alert">
+                  <h5>Emergency Contact</h5>
+                  <ul>
+                    <li>
+                      <span className="fw-semibold">
+                        {emergencyContact.name}
+                      </span>
+                    </li>
+                    <li>
+                      <span className="active-hover">
+                        {emergencyContact.phone}
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
+
+export default TravelerCard;
